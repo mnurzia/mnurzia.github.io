@@ -1,0 +1,21 @@
+<h1 id="content-title">
+  {{ $title := .Title }}
+  {{ if and (eq .Kind "taxonomy") (eq .Type "tags") }}
+    {{ $title = "Tags" }}
+  {{ else if and (eq .Kind "term") (eq .Type "tags") }}
+    {{ $title = (printf "Tag: %s" .Title) }}
+  {{ end }}
+  <a href="{{ .RelPermalink }}" class="sneaky-link">{{ $title | markdownify }}</a>
+</h1>
+{{ if (gt .Params.date 0) }}
+<span class="date">{{ .Date.Format "January 2, 2006" }}</span>
+{{ end }}
+{{ $taxonomy := "tags" }} {{ with .Param $taxonomy }}
+  {{ if (gt $.Params.date 0) }}
+  <span class="date">&#183;</span>
+  {{ end }}
+  {{ range $index, $tag := . }} {{ with $.Site.GetPage (printf "/%s/%s"
+  $taxonomy $tag) -}}
+    <a href="{{ .Permalink }}">{{ $tag | urlize }}</a>
+  {{- end -}} {{- end -}}
+{{ end }}

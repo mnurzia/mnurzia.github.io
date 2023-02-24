@@ -1,0 +1,22 @@
+{{ $image := resources.Get "me.jpg" }}
+{{ with $image }}
+<img id="me" src="{{ $image.RelPermalink }}" alt="Picture of Max Nurzia" id="header-img" />
+{{ end }}
+<div id="title">
+  <ul class="nobullet">
+    <li><h1 id="title-item"><a href="/" id="title-link" class="sneaky-link">Max Nurzia</a></h1></li>
+    <li class="subtitle-item">
+      <i><a class="sneaky-link" href="mailto:max@mmn.sh">max@mmn.sh</a></i>
+      <i class="key"><a class="sneaky-link" href="/mmn.pgp"><i class="i i-key"></i> PGP</a></i>
+      <i class="key"><a class="sneaky-link" href="/mmn.pub"><i class="i i-key"></i> SSH</a></i>
+    </li>
+    <i><li class="subtitle-item"><a class="sneaky-link" href="mailto:~mn/public-inbox@lists.sr.ht">~mn/public-inbox@lists.sr.ht</span></a></li></i>
+  </ul>
+</div>
+<nav>
+  <ul class="nobullet i-ul" id="menu">
+    {{ range .Site.Menus.main }}
+    <li class="menu-item"><i class="i i-{{ .Pre }}"></i><a class="sneaky-link" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+    {{ end }}
+  </ul>
+</nav>

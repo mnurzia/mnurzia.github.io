@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+{{ if not .IsHome }}
+{{ partial "title.html" . }}
+{{ end }}
+
+{{ .Content }}
+
+{{ $pages := .Pages }}
+{{ if .IsHome }}{{ $pages = .Site.RegularPages }}{{ end }}
+<ul class="nobullet" style="margin-top: 0.5em">
+{{ range (where $pages "Section" "!=" "") }}
+<li class="item-dense">
+  {{ if (gt .Params.date 0) }}
+    <time class="date">{{ .Date.Format "2006-01-02" }}</time>
+  {{ end }}
+  <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+</li>
+{{ end }}
+</ul>
+
+{{ end }}

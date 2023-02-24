@@ -1,0 +1,39 @@
+baseURL = 'http://mmn.sh/'
+languageCode = 'en-us'
+title = 'MN'
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[menu]
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 1
+    pre = "info"
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+    pre = "list"
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+    pre = "tag"
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects"
+    weight = 4
+    pre = "wrench"
+  [[menu.main]]
+    name = "GitHub"
+    url = "https://www.github.com/mnurzia"
+    weight = 5
+    pre = "github"
+  [[menu.main]]
+    name = "Feed"
+    url = "/index.xml"
+    weight = 6
+    pre = "feed"

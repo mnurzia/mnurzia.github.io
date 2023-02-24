@@ -1,0 +1,8 @@
+{{ define "main" }}
+  {{ range first 10 .Site.RegularPages }}
+    {{ if (not .Params.nosummary)}}
+      {{ partial "title.html" . }}
+      <p>{{ .Summary }}</p>
+    {{ end }}
+  {{ end }}
+{{ end }}
